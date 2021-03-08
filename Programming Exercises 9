@@ -1,0 +1,97 @@
+public abstract class Insurance
+{
+	private String seguro;
+	protected double costo_mensual;
+	
+	public Insurance(String tipo)
+	{
+		seguro = tipo;
+	}
+
+	public String getSeguro()
+	{
+		return seguro;
+	}
+
+	public double getCostoo_mensual()
+	{
+		return costo_mensual;
+	}
+
+	public abstract void setCosto();
+	public abstract void display();
+}
+
+public class Vida extends Insurance
+{
+	
+	private final double COSTO_VIDA = 36;
+
+	public Vida()
+	{
+		super("Vida");
+		setCosto();
+	}
+
+	public void setCosto()
+	{
+		costo_mensual = COSTO_VIDA;
+	}
+
+	public void display()
+	{
+		JOptionPane.showMessageDialog(null, "Tipo de seguro: " + getSeguro() + "\nCosto Mensual: $" + getCostoo_mensual());
+	}
+}
+
+
+
+import javax.swing.JOptionPane;
+
+public class Salud extends Insurance
+{
+	
+	private final double COSTO_SEGURO = 196;
+
+	public Salud()
+	{
+		super("Salud");
+		setCosto();
+	}
+
+	public void setCosto()
+	{
+		costo_mensual = COSTO_SEGURO;
+	}
+
+	public void display()
+	{
+		JOptionPane.showMessageDialog(null, "Tipo de seguro: " + getSeguro() + "\nCosto Mensual: $" + getCostoo_mensual());
+	}
+}
+
+
+import javax.swing.JOptionPane;
+
+public class UseInsurance
+{
+	public static void main(String[] args)
+	{
+		String userInput;
+		int seleccion;
+
+		userInput = JOptionPane.showInputDialog(null, "Enseña el tipo de seguro\n 1 - Vida \n 2 - Salud");
+		seleccion = Integer.parseInt(userInput);
+
+		if(seleccion == 1)
+		{
+			Vida seguro_vida = new Vida();
+			seguro_vida.display();
+		}
+		else
+		{
+			Salud salud_vida = new Salud();
+			salud_vida.display();
+		}
+	}
+}
