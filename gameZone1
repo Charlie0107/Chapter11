@@ -1,0 +1,124 @@
+public abstract class Alien
+
+{	
+
+	protected String nombre;
+	protected String tipo_alien;
+	private String planeta;
+	private int numero_ojos;	
+	
+
+	public Alien(String nombre, String tipo_alien, String planeta, int numero_ojos)
+	{
+		this.nombre = nombre;
+		this.tipo_alien = tipo_alien;
+		this.planeta = planeta;
+		this.numero_ojos = numero_ojos;
+	}
+	
+
+	abstract String getNombre();
+	
+
+	abstract String getTipo_alien();
+	
+
+	public String getPlaneta()
+	{
+		return planeta;
+	}
+	
+
+	public int getNumero_ojos()
+	{
+		return numero_ojos;
+	}
+	
+
+	public String toString()
+	{
+		String classDetails = getNombre() + ", a " + getTipo_alien() + " es del planeta " + getPlaneta() + " y tienen "
+				+ getNumero_ojos() + " ojos!";
+		
+		return classDetails;
+	}
+}
+
+
+
+
+public class Martian extends Alien
+{
+	final int ANCHO = 50, ALTURA = 50;
+	final int arcSize = 50;
+	
+
+	public Martian()
+	{
+		super("Mork", "Jupiterian", "Jupiter", 4);
+	}
+	
+
+	public String getPlaneta()
+	{
+		return super.getPlaneta();
+	}
+	
+
+	public int getNumero_ojos()
+	{
+		return super.getNumero_ojos();
+	}
+	
+
+	public String getNombre()
+	{
+		return nombre;
+	}
+	
+
+	public String getTipo_alien()
+	{
+		return tipo_alien;
+	}
+	
+
+}
+
+
+
+public class Jupiterian extends Alien
+{
+	final int ANCHO = 70, ALTURA = 70;
+	final int arcSize = 70;
+	
+
+	public Jupiterian()
+	{
+		super("Martian1", "Martian2", "Martian3", 2);
+	}
+	
+
+	public String getPlaneta()
+	{
+		return super.getPlaneta();
+	}
+	
+
+	public int getNumero_ojos()
+	{
+		return super.getNumero_ojos();
+	}
+
+	public String getNombre()
+	{
+		return nombre;
+	}
+	
+
+	public String getTipo_alien()
+	{
+		return tipo_alien;
+	}
+
+}
