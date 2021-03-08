@@ -1,0 +1,47 @@
+public class Auto implements Player {
+    
+    @Override
+    public void play() {
+        System.out.println("Autos");
+    }
+    
+}
+
+
+
+public class Ford extends Auto{
+
+    public Ford(String make, float precio) {
+        super(make,precio);
+    }
+
+    @Override
+    public void setPrecio() {
+       super.carPrecio=28000.99;
+    }
+    
+}
+
+
+
+public class Chevy extends Auto{
+
+    public Chevy(String make, double precio) {
+        super(make,precio);
+    }
+
+    //@Override
+    void setPrecio() {
+        super.carPrecio=20000.99;
+    }
+    
+}
+
+
+
+public class UseAuto {
+    public static void main(String[] args){
+       // Chevy car1=new Chevy("new",);
+    }
+    
+}
