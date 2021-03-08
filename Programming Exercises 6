@@ -1,0 +1,118 @@
+public abstract class NewspaperSubscriber {
+    protected String direccion;
+    protected double suscripcion;
+
+    public void setDireccion(String calle){
+        direccion = calle;
+    }
+    public String getDireccion(){
+        return direccion;
+    }
+
+    public abstract void setSuscripcion();
+
+    public double getSuscripcion(){
+        return suscripcion;
+    }
+
+    public boolean equals(NewspaperSubscriber suscriptor){
+        boolean result;
+        if(direccion.equals(suscriptor.direccion)){
+            result = true;
+        }else
+            result = false;
+
+        return result;
+    }
+
+
+public class SevenDaySubscriber extends NewspaperSubscriber {
+    public String tipo_sub;
+
+    public SevenDaySubscriber(){
+        setSuscripcion();
+    }
+
+    @Override
+    public void setSuscripcion() {
+        suscripcion = 4.50;
+    }
+
+    public String toString(){
+        return "La calle del suscriptor es: " + direccion + "\nEl suscriptor tiene : " + getSuscripcion() +
+                "\nEl servicio fue : " + tipo_sub;
+    }
+}
+
+public class WeekdaySubscriber extends NewspaperSubscriber {
+    public String tipo_sub;
+    public WeekdaySubscriber() {
+        setSuscripcion();
+    }
+
+    @Override
+    public void setSuscripcion() {
+        suscripcion = 3.50;
+    }
+
+    public String toString(){
+        return "La calle del suscriptor es: " + direccion + "\nLa suscripcion es: " + getSuscripcion() +
+                "\nEl servicio fue de: " + tipo_sub;
+    }
+
+}
+
+
+public class WeekendSubscriber extends NewspaperSubscriber {
+
+    public String tipo_sub;
+
+    public WeekendSubscriber() {
+        setSuscripcion();
+    }
+
+    @Override
+    public void setSuscripcion() {
+        suscripcion = 2.00;
+    }
+
+    public String toString(){
+        return "La calle del suscriptor es: " + direccion + "\nLa suscripcion fue de: " + getSuscripcion() +
+                "\nEl servicio fue: " + tipo_sub;
+    }
+}
+
+
+import javax.swing.*;
+
+public class Subscribers {
+    public static void main(String[] args) {
+        NewspaperSubscriber[] suscriptoress = new NewspaperSubscriber[6];
+
+        for (int x = 0; x < suscriptoress.length; x++) {
+            String calle = JOptionPane.showInputDialog(null, "Ingresa tu calle: ");
+            suscriptoress[x].setDireccion(calle);
+            int userService = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresa el servicio (1: seven day Subscription, " +
+                    "2: weekly subscription, 3: weekend subscription "));
+
+            if (userService == 1) {
+                suscriptoress[x] = new SevenDaySubscriber();
+            } else if (userService == 2) {
+                suscriptoress[x] = new WeekdaySubscriber();
+            } else if (userService == 3) {
+                suscriptoress[x] = new WeekendSubscriber();
+            }
+            for(int y = 0; y < x; y++){
+                if(suscriptoress[x].getDireccion().equals(suscriptoress[x].getDireccion())){
+                    System.out.println("No tienes suscripcion!");
+                    --x;
+                }
+            }
+        }
+        System.out.println("\n\nLas suscripciones son:\n");
+        for(int j = 0; j < suscriptoress.length; j++){
+            suscriptoress[j].toString();
+        }
+
+    }
+}
