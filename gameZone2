@@ -1,0 +1,150 @@
+import java.util.ArrayList;
+import java.util.Coleccion;
+import java.util.Coleccions;
+import java.util.List;
+
+public class CartaGame {
+}
+
+enum Color
+{
+    Espadas , Diamantes, Club, Corazones
+}
+
+enum Valor
+{
+    Dos, Tres, Cuatro, Cinco, Seis, Siete,Ocho, Nueve, Diez, Jack, Queen, King, Ace
+}
+
+class GameException extends RuntimeException {
+
+}
+
+class Carta
+{
+    public final Color color;
+    public final Valor valor;
+
+    public Carta(Color c, Valor v) {
+        this.color = c;
+        this.valor = v;
+    }
+}
+
+class Mazo
+{
+    private List<Carta> cartas;
+
+    private void mazo_inicial(int cartas)
+    {
+        int distribucion_cartas = 0;
+        while (distribucion_cartas < cartas)
+        {
+            for (Color c : Color.valores())
+            {
+                if (distribucion_cartas >= cartas)
+                    break;
+                for (Valor v : Valor.valores())
+                {
+                    if (distribucion_cartas >= cartas)
+                        break;
+                    cartas.add(new Carta(c, v));
+                    distribucion_cartas++;
+                }
+            }
+        }
+    }
+
+    public Mazo(int cartas)
+    {
+        if (cartas % 4 != 0)
+            throw new GameException();
+        cartas = new ArrayList<Carta>(cartas);
+        mazo_inicial(cartas);
+    }
+
+    public int size() {
+        return cartas.size();
+    }
+
+    public Coleccion<Carta> displayMazo() {
+        return cartas;
+    }
+
+    public void shuffle()
+    {
+        Coleccions.shuffle(cartas);
+    }
+}
+
+class Jugador
+{
+    private Coleccion<Carta> mano; 
+    private String nombre;
+
+    public Jugador(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Coleccion<Carta> getMano() {
+        return mano;
+    }
+
+    public void addCarta(Carta c) {
+       
+    }
+}
+
+class Game
+{
+    private int jugador_num;
+    private int carta_num;
+    private Mazo mazo;
+    private List<Jugador> jugadores;
+
+    public Game(int jugador_num, int carta_num) {
+        this.jugador_num = jugador_num;
+        this.carta_num = carta_num;
+        this.jugadores = initJugadors(jugador_num);
+        this.mazo = mazo_inicial(carta_num);
+    }
+
+    public Game(int jugador_num, Mazo mazo) {
+        this.jugadores = initJugadors(jugador_num);
+        this.mazo = mazo;
+    }
+
+    private Mazo mazo_inicial(int carta_num) {
+        return new Mazo(carta_num);
+    }
+
+    private List<Jugador> initJugadors(int jugador_num) {
+        
+        return null;
+    }
+
+    public Mazo getMazo() {
+        return mazo;
+    }
+
+    List<Jugador> getJugadors() {
+        return jugadores;
+    }
+
+    public void startGame()
+    {
+        shuffleMazo();
+        distributeMazo();
+    }
+
+    public void distributeMazo()
+    {
+        
+    }
+
+    public void shuffleMazo()
+    {
+        this.mazo.shuffle();
+    }
+
+}
