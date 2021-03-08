@@ -1,0 +1,56 @@
+public abstract class Book {
+    StringTitulo_libro; 
+    double precio;     
+    
+    public Book(String Titulo ){
+       Titulo_libro=Titulo;
+    }
+    
+    public String getTitulo(){
+        returnTitulo_libro;
+    }
+    
+    public double getPrecio(){
+        returnprecio;
+    }
+    
+    public abstract void setPrecio();
+}
+
+public class Fiction extends Book{
+
+    public Fiction(String Titulo) {
+        super(Titulo);
+        setPrecio();
+    }
+    
+    public void setPrecio(){
+        super.Precio=24.99;
+    }
+}
+
+public class NonFiction extends Book{
+
+    public NonFiction(String Titulo) {
+        super(Titulo);
+        setPrecio();
+    }
+    
+    public void setPrecio(){
+        super.Precio=37.99;
+    }
+}
+
+public class UseBook {
+    
+   
+    public static void main(String[] args){
+        Book books;
+        books=new Fiction("Harry Potter");
+        System.out.println(books.getTitulo());
+        books=new NonFiction("Habia una vez...");
+        System.out.println(books);
+        
+        
+    }
+}
