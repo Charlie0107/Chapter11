@@ -1,0 +1,47 @@
+public interface Turner {
+    public String displayInfo="";
+    public void turn();
+}
+
+
+public class Hoja implements Turner{
+
+    @Override
+    public void turn() {
+        System.out.println("Cambiar colores");
+    }
+    
+}
+
+
+public class Pagina implements Turner{
+
+    @Override
+    public void turn() {
+        System.out.println("cambiar paginas");
+    }
+    
+}
+
+
+public class Pancake implements Turner{
+
+    @Override
+    public void turn() {
+        System.out.println("Voltear");
+    }
+    
+}
+
+
+public class DemoTurners {
+    public static void main(String[] args){
+        Hoja h = new Hoja();
+        Pagina pg = new Pagina();
+        Pancake p = new Pancake();
+        h.turn();
+        pg.turn();
+        p.turn();
+        
+    }
+}
