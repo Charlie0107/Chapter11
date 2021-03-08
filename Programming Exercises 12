@@ -1,0 +1,47 @@
+public class Player implements Turner{
+
+    @Override
+    public void turn() {
+        System.out.println("cambiar jugador");
+    }
+    
+}
+
+public class Child implements Player{
+    
+    @Override
+    public void play() {
+        System.out.println("niños");
+    }
+    
+}
+
+public class Actor implements Player {
+    
+    @Override
+    public void play() {
+        System.out.println("actores");
+    }
+    
+}
+
+public class Musician implements Player{
+    
+    @Override
+    public void play() {
+       System.out.println("musica");    
+    }
+    
+    
+}
+
+public class UsePlayer {
+    public static void main(String[] args){
+        Child c1=new Child();
+        Musician m1=new Musician();
+        Actor a1=new Actor();
+        c1.play();
+        m1.play();
+        a1.play();
+        }
+}
