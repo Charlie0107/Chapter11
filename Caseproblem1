@@ -1,0 +1,147 @@
+public abstract class Empleado
+{
+   private String number_empleado;
+   private String apellido;
+   private String nombres;
+   protected double payRate;
+   protected String trabajo_titulo;
+
+   public void setNumero_empleado(String numero)
+   {
+      number_empleado = numero;
+   }
+   public void setApellido(String nombre)
+   {
+      apellido = nombre;
+   }
+   public void setNombres(String nombre)
+   {
+      nombres = nombre;
+   }
+   public String getNumero_empleado()
+   {
+      return number_empleado;
+   }
+   public String getNombre()
+   {
+      return nombres + " " + apellido;
+   }
+   public double getPayRate()
+   {
+      return payRate;
+   }
+   public String getTrabajo_titulo()
+   {
+      return trabajo_titulo;
+   }
+   public abstract void setPayRate(double rate);
+   public abstract void setTrabajo_titulo();
+}
+
+
+
+
+public class Waitstaff extends Empleado
+{
+   public final static double PAY_RATE = 10.00;
+   public void setPayRate(double rate)
+   {
+      if(rate > PAY_RATE)
+        payRate = PAY_RATE;
+      else
+        payRate = rate;
+   }
+   public void setTrabajo_titulo()
+   {
+      trabajo_titulo = "waitstaff";
+   }
+}
+
+
+
+
+
+public class Bartender extends Empleado
+{
+   public final static double PAY_RATE = 14.00;
+   public void setPayRate(double rate)
+   {
+      if(rate > PAY_RATE)
+         payRate = PAY_RATE;
+      else
+         payRate = rate;
+   }
+   public void setTrabajo_titulo()
+   {
+      trabajo_titulo = "bartender";
+   }
+}
+
+
+
+public class Coordinator extends Empleado
+{
+   public final static double PAY_RATE = 20.00;
+   public void setPayRate(double rate)
+   {
+      if(rate > PAY_RATE)
+        payRate = PAY_RATE;
+      else
+        payRate = rate;
+   }
+   public void setTrabajo_titulo()
+   {
+      trabajo_titulo = "coordinadorr";
+   }
+}
+
+
+
+
+public class DinnerEvent extends Event
+{
+   public final static String[] ENTRADAS = {"chivo", "pollo", "pescado", "pasta"};
+   public final static String[] SALIDAS = {"ensalada", "vegetales", "papas", "pan tostado", "cena"};
+   public final static String[] POSTRES = {"donas", "pay de manzana", "pasteñ"};
+   private int eleccion_entrada;
+   private int salida1;
+   private int salida2;
+   private int eleccion_postre;
+   Empleado[] emps = new Empleado[15];
+   public DinnerEvent(String numero, int invitados, int eleccion1, int eleccion2, int eleccion3, int eleccion4)
+   {
+      super(numero, invitados);
+      if(eleccion1 < ENTRADAS.length)
+         eleccion_entrada = eleccion1;
+      else
+         eleccion_entrada = 0;
+      if(eleccion2 < SALIDAS.length)
+         salida1 = eleccion2;
+      else
+         salida1 = 0;
+      if(eleccion3 < ENTRADAS.length)
+         salida2 = eleccion3;
+      else
+         salida2 = 0;
+      if(eleccion4 < POSTRES.length)
+         eleccion_postre = eleccion4;
+      else
+         eleccion_postre = 0;
+    }
+   public Empleado[] getEmps()
+   {
+      return emps;
+   }
+   public void setEmps(Empleado[] staff)
+   {
+      emps = staff;
+   }
+   public String getMenu()
+   {
+      String menu = ENTRADAS[eleccion_entrada] + ", " + SALIDAS[salida1] + ", " +
+        SALIDAS[salida2] + ", and " + POSTRES[eleccion_postre];
+      return menu;
+   }
+ 
+}
+
