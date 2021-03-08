@@ -1,0 +1,121 @@
+public abstract class Division{
+
+  public String nombre_division;
+  public String numero_cuenta;
+  
+  public abstract void display();
+  
+  public Division(){
+    nombre_division = "";
+    numero_cuenta= "";
+  }
+  
+  public Division(String _nombre_division, String _numero_cuenta){
+    nombre_division = _nombre_division;
+    numero_cuenta = _numero_cuenta;
+  }
+  
+  public void setNombre_division(String _nombre_division){
+    nombre_division = _nombre_division;
+  }
+  
+  public String getNombre_division(){
+    return nombre_division;
+  }
+  
+  public void setNumero_cuenta(String _numero_cuenta){
+    numero_cuenta = _numero_cuenta;
+  }
+  
+  public String getNumero_cuenta(){
+    return numero_cuenta;
+  }
+    
+
+}
+
+public class InternationalDivision extends Division{
+ public String pais;
+ public String lenguaje;
+ 
+ public InternationalDivision(){
+   super();
+   pais = "";
+   lenguaje = "";
+ }
+ 
+ public InternationalDivision(String _nombre_division, String _numero_cuenta, String _pais, String _lenguaje){
+   super(_nombre_division, _numero_cuenta);
+   pais = _pais;
+   lenguaje = _lenguaje;
+ }
+ 
+ public void setPais(String _pais){
+   pais = _pais;
+ }
+ public String getPais(){
+   return pais;
+ }
+ 
+ public void setLenguaje(String _lenguaje){
+   lenguaje = _lenguaje;
+ }
+ 
+ public String getLenguaje(){
+   return lenguaje;
+ }
+ public void display(){
+   System.out.println(getNombre_division());
+   System.out.println("Nombre de la compañia: Coca Cola");
+   System.out.println("Numero de cuenta: " + getNumero_cuenta());
+   System.out.println("Pais: " + pais);
+   System.out.println("Lenguaje: " + lenguaje);
+ }
+}
+
+public class DomesticDivision extends Division{
+ public String estado;
+ 
+ public DomesticDivision(){
+  super();
+  estado = "";
+ }
+ 
+ public DomesticDivision(String _nombre_division, String _numero_cuenta, String _estado){
+   super(_nombre_division, _numero_cuenta);
+   estado = _estado;
+ }
+ 
+ public void setEstado(String _estado){
+   estado = _estado;
+ }
+ public String getEstado(){
+   return estado;
+ }
+ 
+ public void display(){
+   System.out.println(getNombre_division());
+   System.out.println("Nombre de la compañia: Coca Cola");
+   System.out.println("Numero de cuenta: " + getNumero_cuenta());
+   System.out.println("Estado: " + estado);
+ }
+ public void displayChange(){
+   System.out.println("Localizacion del numero de cuenta " + getNumero_cuenta() + " esta en " + estado + ".");
+ }
+}
+
+
+public class UseDivision{
+ 
+  public static void main(String[] args){
+    
+    InternationalDivision id1 = new InternationalDivision("International Division", "101", "China", "Chinese");
+    DomesticDivision dd1 = new DomesticDivision("Domestic Division", "102", "Virginia");
+    id1.display();
+    dd1.display();
+    dd1.setEstado("Maryland");
+    dd1.displayChange();
+    
+    
+  }
+}
