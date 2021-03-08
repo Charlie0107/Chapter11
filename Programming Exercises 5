@@ -1,0 +1,47 @@
+public class Elemento implements Comparable<Elemento>{
+	String valor;
+	int cuenta;
+	String codigo = null;
+	Elemento izquierda;
+	Elemento derecha;
+	
+	public Elemento(String v, int c){
+		this.valor = v;
+		this.cuenta = c;
+		this.izquierda = null;
+		this.derecha = null;
+	}
+	
+	public Elemento(Elemento l, Elemento r){
+		this.izquierda = l;
+		this.derecha = r;
+		this.cuenta = l.getCuenta() + r.getCuenta();
+		this.valor = null;
+	
+	}
+	
+	public int getCuenta(){ return this.cuenta; }
+	
+	public void propogate(String codigo){
+		this.codigo = codigo;
+		if(izquierda != null)
+			izquierda.propogate(codigo+"0");
+		if(derecha != null)
+			derecha.propogate(codigo+"1");
+	}
+	
+	@Override
+	public int compareTo(Elemento e){
+		if(this.getCuenta() > e.getCuenta())
+			return 1;
+		else if(this.getCuenta() == e.getCuenta())
+			return 0;
+		else
+			return -1;
+	}
+	
+	@Override
+	public String toString(){
+		return "Value = "+valor+" Frequency = "+cuenta+" Codigo = "+codigo;
+	}
+}
