@@ -1,0 +1,52 @@
+public abstract class GeometricFigure2 {
+    public int altura, ancho;
+    public String tipo_figura;
+    public int area;
+    abstract void getArea(int h, int w);
+    
+    public String toString(){
+        return("h: "+altura+" w: "+ancho+" area: "+area);
+    }
+    
+}
+
+public class Square2 extends GeometricFigure2{
+    Square(int a, int b){
+        this.altura=a;
+        this.ancho=b;
+        getArea(a,b);
+    }
+
+    @Override
+    public void getArea(int h, int w) {
+      area=(h*w);
+    }
+}
+
+
+public class Triangle2 extends GeometricFigure2{
+
+    Triangle(int a, int b){
+        this.altura=a;
+        this.ancho=b;
+        getArea(a,b);
+    }
+    @Override
+    public void getArea(int h, int w) {
+        area=(h*w)/2;
+    }
+    
+}
+
+public class UseGeometric2 {
+    public static void main(String[] args){
+        GeometricFigure figures[]=new GeometricFigure[2];
+        Square s1=new Square(10,44);
+        Triangle t1=new Triangle(14,33);
+        figures[0]=s1;
+        figures[1]=t1;
+    System.out.println(Arrays.toString(figures));
+        
+    }
+    
+}
